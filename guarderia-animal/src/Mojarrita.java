@@ -27,7 +27,7 @@ public class Mojarrita extends Animal {
     //Metodos
     @Override
     void saludar() {
-        System.out.println("Hola me llamo: " + this.getNombre() + " y ademas soy una mojarrita");
+        System.out.println("Hola me llamo: " + this.getNombre() + " y ademas soy una mojarrita \n glu glu...");
     }
 
     @Override
