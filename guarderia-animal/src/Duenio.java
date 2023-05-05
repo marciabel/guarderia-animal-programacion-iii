@@ -36,4 +36,9 @@ public class Duenio {
     }
 
 
+    @Override
+    public int hashCode() {
+        return this.dni;
+    }
+
 }

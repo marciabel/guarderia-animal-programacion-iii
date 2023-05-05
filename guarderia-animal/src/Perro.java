@@ -40,12 +40,12 @@ public class Perro extends Animal {
 
     @Override
     void saludar() {
-        System.out.println("Hola me llamo: " + this.getNombre() + " y ademas soy un perro");
+        System.out.println("Hola me llamo: " + this.getNombre() + " y ademas soy un perro... \nwoof woof...");
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return ("perro").hashCode() + this.getNombre().hashCode() + this.getEdad();
     }
 
     @Override
@@ -55,6 +55,12 @@ public class Perro extends Animal {
 
     @Override
     public String toString() {
-        return super.toString();
+        return
+                "Tipo de animal: Perro \n" +
+                "Nombre: " + this.getNombre() + "\n" +
+                "Edad: " + this.getEdad() + "\n" +
+                "Raza: " + this.raza + "\n" +
+                "Sexo: " + this.getSexo() + "\n" +
+                "Peso (kg): " + this.getPeso();
     }
 }

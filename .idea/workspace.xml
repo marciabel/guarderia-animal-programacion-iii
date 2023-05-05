@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9470d28-5b5c-42d1-a2c6-276327b60cee" name="Changes" comment="" />
+    <list default="true" id="d9470d28-5b5c-42d1-a2c6-276327b60cee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/guarderia-animal-programacion-iii.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/guarderia-animal-programacion-iii.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Duenio.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Duenio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Gato.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Gato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Hamster.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Hamster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Mojarrita.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Pez.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Perro.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Perro.java" afterDir="false" />
+    </list>
+    <list id="d5f0dc41-8b12-462c-a591-8fe095e2afe8" name="Changes by Windows10" comment="">
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +25,25 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/guarderia-animal/src/Main.java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="1" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="12" end1="14" start2="13" end2="15" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="15" end1="16" start2="16" end2="17" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="25" end1="42" start2="26" end2="49" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="45" end1="45" start2="52" end2="54" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="60" end1="62" start2="69" end2="108" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="64" end1="65" start2="110" end2="154" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="66" end1="66" start2="155" end2="167" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="67" end1="67" start2="168" end2="188" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="69" end1="71" start2="190" end2="194" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="73" end1="74" start2="196" end2="212" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="76" end1="76" start2="214" end2="223" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="110" end1="110" start2="257" end2="258" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -23,6 +58,16 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "C:/Users/marci/OneDrive/Documentos/ACADEMICS/TUP/2DO AÑO - PRIMER CUATRIMESTRE/PROGRAMACION III/ejercitacion-clases/ejemplo-clase-04",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.notifications",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -35,10 +80,15 @@
       <option name="presentableId" value="Default" />
       <updated>1683002070842</updated>
       <workItem from="1683002074601" duration="45000" />
+      <workItem from="1683298912410" duration="16463000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

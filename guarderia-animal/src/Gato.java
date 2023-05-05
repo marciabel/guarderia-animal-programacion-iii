@@ -19,12 +19,12 @@ public class Gato extends Animal {
     //Metodos
     @Override
     void saludar() {
-        System.out.println("Hola me llamo: " + this.getNombre() + " y ademas soy un gato");
+        System.out.println("Hola me llamo: " + this.getNombre() + " y ademas soy un gato... \nmiau miau...");
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return ("hamster").hashCode() + this.getNombre().hashCode() + this.getEdad();
     }
 
     @Override
@@ -34,6 +34,10 @@ public class Gato extends Animal {
 
     @Override
     public String toString() {
-        return super.toString();
+        return ("Tipo de animal: Gato \n" +
+                "Nombre: " + this.getNombre() + "\n" +
+                "Edad: " + this.getEdad() + "\n" +
+                "Sexo: " + this.getSexo() + "\n" +
+                "Peso (kg): " + this.getPeso());
     }
 }
