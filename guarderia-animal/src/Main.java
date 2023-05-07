@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +13,8 @@ public class Main {
         //Collection para almacenar los animales. Por el momento todas las especies se almacenan en la misma estructura.
         List<Animal> animales = new ArrayList<>();
 
-        Duenio nuevo = new Duenio(398, "mar", "dire");
-        Animal animal1 = new Perro("nombre", 2, nuevo, Sexo.HEMBRA, 14.5);
-
-        animales.add(animal1);
+        //Esta función se encarga de cargar animales predeterminados a la lista para poder demostrar el funcionamiento del programa.
+        agregarAnimalesIniciales(animales);
 
         //MENU ----------------------------------------------------------------------------------------
         int opcion;
@@ -31,14 +31,19 @@ public class Main {
                     retirarAnimales(animales, sc); break;
                 }
                 case 3: {
-                    cantidadAnimalesEnGuarderia(animales, sc);
+                    cantidadAnimalesEnGuarderia(animales);
+                    sc.nextLine(); sc.nextLine();
                     break;
                 }
                 case 4: {
-                    listarAnimalesEnGuarderia(animales, sc); break;
+                    listarAnimalesEnGuarderia(animales);
+                    sc.nextLine(); sc.nextLine();
+                    break;
                 }
                 case 5: {
-                    hacerSaludarAnimales(animales, sc); break;
+                    hacerSaludarAnimales(animales);
+                    sc.nextLine(); sc.nextLine();
+                    break;
                 }
                 case 0: {
                     System.out.println("Saliendo del menu..."); break;
@@ -51,10 +56,9 @@ public class Main {
 
         } while (opcion != 0);
 
-        System.out.println(animales);
-
     }
 
+    //Opciones para imprimir--------------------------------------------------------------------------
     public static void imprimirMenu() {
         System.out.println("Ingrese una opción: ");
         System.out.println("1. Ingresar animal a la guarderia");
@@ -65,8 +69,22 @@ public class Main {
         System.out.println("0. Salir");
     }
 
+    public static void imprimirAnimales(List <Animal> animales) {
+        for (Animal animal: animales) {
+            System.out.println("Posición : " + animales.indexOf(animal) + 1);
+            System.out.println(animal);
+            System.out.println("Datos del dueño: ");
+            System.out.println("    - Nombre   : " + animal.getDuenio().getNombre());
+            System.out.println("    - Nro. DNI : " + animal.getDuenio().getDni());
+            System.out.println("    - Direccion: " + animal.getDuenio().getDireccion());
 
+            System.out.println("======================================================");
+        }
+    }
 
+    //Opciones menu-----------------------------------------------------------------------------------
+
+    //Opcion 1===============================================================================
     public static void ingresarAnimal(List<Animal> animales, Scanner sc) {
 
         System.out.println("Ingrese la especie del animal: ");
@@ -87,7 +105,7 @@ public class Main {
         System.out.println("Ingrese el peso del animal: ");
         double peso = sc.nextDouble();
 
-        if (especie.toLowerCase() == "perro"){
+        if (especie.toLowerCase().equals("perro")){
             System.out.println("Ingrese la raza del perro: ");
             String raza = sc.nextLine();
 
@@ -95,7 +113,7 @@ public class Main {
             Perro perro = new Perro(nombre, edad, duenio, sexo, peso, raza);
             animales.add(perro);
         }
-        else if (especie.toLowerCase() == "pez"){
+        else if (especie.toLowerCase().equals("pez")){
 
             Duenio duenio = new Duenio(dni, nombreDuenio, direccion);
             System.out.println("Ingrese de qué tipo de agua es el pez: (salada/dulce");
@@ -108,6 +126,7 @@ public class Main {
 
     }
 
+    //Opcion 2===============================================================================
     public static void retirarAnimales(List<Animal> animales, Scanner sc) {
         System.out.println("Seleccione una de las opciones a continuación: ");
         System.out.println("1. Retirar un animalito de la guarderia");
@@ -117,14 +136,28 @@ public class Main {
 
         switch (retirarOpcion) {
             case 1: {
-                retirarUnAnimal(animales, sc);
+                retirarUnAnimal(animales, sc); break;
             }
             case 2: {
+                System.out.println("Se retiraran los siguientes animalitos de la guarderia: ");
+                imprimirAnimales(animales);
+
+                System.out.println("Confirma la operacion? (S/N)");
+                int confirmarOperacion = sc.next().charAt(0);
+                if (confirmarOperacion == 'S' || confirmarOperacion == 's' ) {
+                    animales.clear();
+                    System.out.println("Animalitos retirados con éxito.");
+                }
+                else {
+                    System.out.println("Operacion cancelada");
+                }
+                break;
 
             }
             default: {
                 System.out.println("Opcion incorrecta, por favor intente de nuevo");
                 retirarAnimales(animales, sc);
+                break;
             }
         }
 
@@ -188,32 +221,28 @@ public class Main {
         }
     }
 
-    public static void cantidadAnimalesEnGuarderia(List<Animal> animales, Scanner sc) {
+    //Opcion 3===============================================================================
+    public static void cantidadAnimalesEnGuarderia(List<Animal> animales) {
         System.out.println("En la guarderia hay actualmente " + animales.size() + " animales.");
         System.out.println("Presione enter para volver al menu.");
-        sc.nextLine(); sc.nextLine();
     }
 
-    public static void listarAnimalesEnGuarderia(List<Animal> animales, Scanner sc) {
+    //Opcion 4===============================================================================
+    public static void listarAnimalesEnGuarderia(List<Animal> animales) {
         System.out.println("______________ANIMALITOS EN LA GUARDERIA______________");
-        for (Animal animal: animales) {
-            System.out.println("Posición : " + animales.indexOf(animal) + 1);
-            System.out.println(animal);
-            System.out.println("Datos del dueño: ");
-            System.out.println("    - Nombre   : " + animal.getDuenio().getNombre());
-            System.out.println("    - Nro. DNI : " + animal.getDuenio().getDni());
-            System.out.println("    - Direccion: " + animal.getDuenio().getDireccion());
+        if (animales.size() > 0) {
+            imprimirAnimales(animales);
 
-            System.out.println("======================================================");
+            System.out.println("");
+            System.out.println("Presione enter para volver al menu.");
         }
-
-        System.out.println("");
-        System.out.println("Presione enter para volver al menu.");
-        sc.nextLine(); sc.nextLine();
-
+        else {
+            System.out.println("No hay animalitos registrados en la guarderia en este momento.");
+        }
     }
 
-    public static void hacerSaludarAnimales(List<Animal> animales, Scanner sc) {
+    //Opcion 5===============================================================================
+    public static void hacerSaludarAnimales(List<Animal> animales) {
         System.out.println("Preparense! A continuación todos nuestros animalitos van a saludar: ");
         for (Animal animal: animales) {
             animal.saludar();
@@ -221,50 +250,62 @@ public class Main {
         }
 
     }
-}
 
-/*
-//INTENTE HACER CON SWITCH, pero sin un metodo/funcion "imprimirMenu()" porque no me salìa je
-public class Main {
-    public static void main(String[] args){
+    //====================================================================================================
+    //Esta función se utiliza para cargar datos de animales a la lista 'animales' en cuanto comienza la
+    //ejecución del programa para demostrar el funcionamiento del mismo.
+    public static void agregarAnimalesIniciales(List<Animal> animales) {
+        Duenio nuevo1 = new Duenio(123, "Mar", "Calle 1");
+        Animal animal1_1 = new Perro("Floki", 6, nuevo1, Sexo.MACHO, 7.2);
+        animales.add(animal1_1);
+        Animal animal1_2 = new Gato("Kiro", 3, nuevo1, Sexo.HEMBRA, 3.7);
+        animales.add(animal1_2);
+        Animal animal1_3 = new Gato("Misha", 11, nuevo1, Sexo.HEMBRA, 2.9);
+        animales.add(animal1_3);
 
-        Scanner sc = new Scanner(System.in);
-        int opcion;
 
-        do {
-            System.out.println("Ingrese una opción: ");
-            System.out.println("1. Ingresar animal a la guarderia");
-            System.out.println("2. Retirar animal de la guarderia");
-            System.out.println("3. Calcular cantidad de animales actualmente en la guardería");
-            System.out.println("4. Listar todos los animales con todos sus datos");
-            System.out.println("5. Hacer saludar a todos los animales de la lista");
-            System.out.println("0. Salir");
+        Duenio nuevo2 = new Duenio(456, "Pom", "Calle 2");
+        Animal animal2_1 = new Perro("Lucho", 4, nuevo2, Sexo.MACHO, 7.8);
+        animales.add(animal2_1);
+        Animal animal2_2 = new Hamster("Rrrraton", 4, nuevo2, Sexo.MACHO, 1.2);
+        animales.add(animal2_2);
+        Animal animal2_3 = new Gato("Coco", 4, nuevo2, Sexo.MACHO, 7.8);
+        animales.add(animal2_3);
+        Animal animal2_4 = new Gato("Juno", 4, nuevo2, Sexo.MACHO, 7.8);
+        animales.add(animal2_4);
 
-            opcion = sc.nextInt();
 
-            switch (opcion) {
-                case 1:
-                    System.out.println("Ingrese nombre del animal:");
-                case 2:
-                    System.out.println("Elija el animal que desea retirar:");
-                case 3:
-                    System.out.println("Actualmente hay" + " animales en la guardería.");
-                case 4:
-                    System.out.println("Lista de animales en la guardería:");
-                case 5:
-                    System.out.println(); //SALUDO
-                case 0:
-                    System.out.println("Saliendo del menu...");
-                    Te quiero mar
-                default:
-                    if (opcion != 0){
-                        System.out.println("Opción inválida, intente de nuevo.");
-                        System.out.println();
-                    }
-            }
-        } while (opcion != 0);
+        Duenio nuevo3 = new Duenio(789, "Pablo", "Calle 3");
+        Animal animal3 = new Perro("Rocky", 1, nuevo3, Sexo.MACHO, 12.3);
+        animales.add(animal3);
 
-        sc.close();
+        Duenio nuevo4 = new Duenio(234, "Maria", "Calle 4");
+        Animal animal4 = new Perro("Toby", 5, nuevo4, Sexo.MACHO, 9.1);
+        animales.add(animal4);
+
+        Duenio nuevo5 = new Duenio(567, "Lucia", "Calle 5");
+        Animal animal5 = new Perro("Lola", 2, nuevo5, Sexo.HEMBRA, 11.5);
+        animales.add(animal5);
+
+        Duenio nuevo6 = new Duenio(890, "Pedro", "Calle 6");
+        Animal animal6 = new Perro("Max", 6, nuevo6, Sexo.MACHO, 8.7);
+        animales.add(animal6);
+
+        Duenio nuevo7 = new Duenio(345, "Sofia", "Calle 7");
+        Animal animal7 = new Perro("Milo", 3, nuevo7, Sexo.MACHO, 13.2);
+        animales.add(animal7);
+
+        Duenio nuevo8 = new Duenio(678, "Carlos", "Calle 8");
+        Animal animal8 = new Perro("Coco", 7, nuevo8, Sexo.HEMBRA, 6.4);
+        animales.add(animal8);
+
+        Duenio nuevo9 = new Duenio(901, "Laura", "Calle 9");
+        Animal animal9 = new Perro("Buddy", 4, nuevo9, Sexo.MACHO, 10.9);
+        animales.add(animal9);
+
+        Duenio nuevo10 = new Duenio(432, "Diego", "Calle 10");
+        Animal animal10 = new Perro("Mia", 5, nuevo10, Sexo.HEMBRA, 8.2);
+        animales.add(animal10);
+
     }
-}*/
-
+}
