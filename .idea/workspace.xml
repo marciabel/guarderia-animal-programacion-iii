@@ -8,7 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Main.java" afterDir="false" />
     </list>
-    <list id="d5f0dc41-8b12-462c-a591-8fe095e2afe8" name="Changes by Windows10" comment="" />
+    <list id="d5f0dc41-8b12-462c-a591-8fe095e2afe8" name="Changes by Windows10" comment="">
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +18,37 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/guarderia-animal/src/Main.java">
+      <ranges>
+        <range start1="4" end1="4" start2="4" end2="5" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="73" end1="74" start2="74" end2="75" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="89" end1="89" start2="90" end2="91" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="90" end1="91" start2="92" end2="94" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="92" end1="93" start2="95" end2="96" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="96" end1="97" start2="99" end2="101" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="100" end1="101" start2="104" end2="106" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="102" end1="103" start2="107" end2="108" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="106" end1="106" start2="111" end2="112" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="107" end1="108" start2="113" end2="117" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="109" end1="110" start2="118" end2="120" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="111" end1="114" start2="121" end2="123" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="115" end1="116" start2="124" end2="125" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="117" end1="118" start2="126" end2="126" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="120" end1="120" start2="128" end2="129" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="121" end1="124" start2="130" end2="132" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="125" end1="125" start2="133" end2="142" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="126" end1="126" start2="143" end2="144" changelist="d5f0dc41-8b12-462c-a591-8fe095e2afe8" />
+        <range start1="166" end1="167" start2="184" end2="185" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="170" end1="172" start2="188" end2="197" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="188" end1="189" start2="213" end2="214" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="190" end1="190" start2="215" end2="219" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="191" end1="191" start2="220" end2="224" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="195" end1="196" start2="228" end2="229" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+        <range start1="201" end1="203" start2="234" end2="250" changelist="d9470d28-5b5c-42d1-a2c6-276327b60cee" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -31,11 +64,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/marci/OneDrive/Documentos/ACADEMICS/TUP/2DO AÑO - PRIMER CUATRIMESTRE/PROGRAMACION III/ejercitacion-clases/ejemplo-clase-04&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marci/OneDrive/Documentos/ACADEMICS/TUP/2DO AÑO - PRIMER CUATRIMESTRE/PROGRAMACION III/guarderia-animal-programacion-iii&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -43,6 +77,15 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="guarderia-animal-programacion-iii" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,6 +98,9 @@
       <workItem from="1683298912410" duration="16463000" />
       <workItem from="1683471468234" duration="4677000" />
       <workItem from="1683495619881" duration="2027000" />
+      <workItem from="1683593244917" duration="23000" />
+      <workItem from="1683682494317" duration="3168000" />
+      <workItem from="1683686096323" duration="7132000" />
     </task>
     <servers />
   </component>

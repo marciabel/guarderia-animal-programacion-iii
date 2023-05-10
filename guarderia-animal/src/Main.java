@@ -2,6 +2,7 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -71,7 +72,7 @@ public class Main {
 
     public static void imprimirAnimales(List <Animal> animales) {
         for (Animal animal: animales) {
-            System.out.println("Posición : " + animales.indexOf(animal) + 1);
+            System.out.println("Posición : " + (animales.indexOf(animal) + 1));
             System.out.println(animal);
             System.out.println("Datos del dueño: ");
             System.out.println("    - Nombre   : " + animal.getDuenio().getNombre());
@@ -87,43 +88,60 @@ public class Main {
     //Opcion 1===============================================================================
     public static void ingresarAnimal(List<Animal> animales, Scanner sc) {
 
+        //Carga de datos del animal
         System.out.println("Ingrese la especie del animal: ");
-        String especie = sc.nextLine();
+        String especie = sc.next();
+        sc.nextLine();
         System.out.println("Ingrese el nombre del animalito: ");
-        String nombre = sc.nextLine();
+        String nombre = sc.next();
         System.out.println("Ingrese edad del animal: ");
         int edad = sc.nextInt();
         System.out.println("Ingrese nombre del dueño: ");
-        String nombreDuenio = sc.nextLine();
+        String nombreDuenio = sc.next();
+        sc.nextLine();
         System.out.println("Ingrese DNI del dueño: ");
         int dni = sc.nextInt();
         System.out.println("Ingrese la direccion donde vive: ");
-        String direccion = sc.nextLine();
+        String direccion = sc.next();
+        sc.nextLine();
         System.out.println("Ingrese el sexo del animal: ");
-        char sexoChar = sc.nextLine().charAt(0);
+        char sexoChar = sc.next().charAt(0);
         Sexo sexo = (sexoChar == 'M') ? Sexo.MACHO : Sexo.HEMBRA;
         System.out.println("Ingrese el peso del animal: ");
         double peso = sc.nextDouble();
+        sc.nextLine();
 
-        if (especie.toLowerCase().equals("perro")){
+        Animal animal;
+        Duenio duenio = new Duenio(dni, nombreDuenio, direccion);
+
+        if (especie.equalsIgnoreCase("perro")){
             System.out.println("Ingrese la raza del perro: ");
-            String raza = sc.nextLine();
+            String raza = sc.next();
+            sc.nextLine();
 
-            Duenio duenio = new Duenio(dni, nombreDuenio, direccion);
-            Perro perro = new Perro(nombre, edad, duenio, sexo, peso, raza);
-            animales.add(perro);
+            animal = new Perro(nombre, edad, duenio, sexo, peso, raza);
+            animales.add(animal);
         }
-        else if (especie.toLowerCase().equals("pez")){
+        else if (especie.equalsIgnoreCase("pez")){
 
-            Duenio duenio = new Duenio(dni, nombreDuenio, direccion);
             System.out.println("Ingrese de qué tipo de agua es el pez: (salada/dulce");
             String tipoAgua = sc.next();
+            sc.nextLine();
 
-            Pez pez = new Pez(nombre, duenio, sexo, tipoAgua);
-            animales.add(pez);
+            animal = new Pez(nombre, edad, duenio, sexo, peso, tipoAgua);
+            animales.add(animal);
+        }
+        else if (especie.equalsIgnoreCase("gato")){
+            animal = new Gato(nombre, edad, duenio, sexo, peso);
+        }
+        else if (especie.equalsIgnoreCase("hamster")){
+            animal = new Hamster(nombre, edad, duenio, sexo, peso);
+        }
+        else{
+            System.out.println("Animal no registrado.");
+            System.out.println();
 
         }
-
     }
 
     //Opcion 2===============================================================================
@@ -164,12 +182,19 @@ public class Main {
     }
     public static void retirarUnAnimal(List<Animal> animales, Scanner sc) {
 
-        int dniDuenio;
+        int dniDuenio = 0;
 
         System.out.println("++++++++++++++++++++RETIRAR UN ANIMALITO++++++++++++++++++++");
         System.out.println("Ingrese el DNI del dueño: ");
-        dniDuenio = sc.nextInt();
-        
+        try {
+            dniDuenio = sc.nextInt();
+        }
+        catch (InputMismatchException e) {
+            System.out.println("No ha ingresado un DNI valido.");
+            sc.nextLine();
+            retirarUnAnimal(animales, sc);
+        }
+
         Duenio duenio;
         List<Animal> animalesDuenio = new ArrayList<>();
 
@@ -186,21 +211,43 @@ public class Main {
             System.out.println("Desea intentar de nuevo? (S/N)");
             char intentarNuevamente =  sc.next().charAt(0);
 
-            if (intentarNuevamente == 'S' || intentarNuevamente == 's') {
+            if (intentarNuevamente== 'S' || intentarNuevamente == 's') {
                 retirarUnAnimal(animales, sc);
+            }
+            else if (intentarNuevamente == 'N' || intentarNuevamente == 'n') {
+                System.out.println("Operacion terminada. Se lo redireccionara al menu principal...");
+                sc.nextLine(); sc.nextLine();
+            }
+            else {
+                System.out.println("La opcion ingresada no es correcta. Se lo redireccionara al menu principal...");
+                sc.nextLine(); sc.nextLine();
             }
         }
         else {
             while (animalesDuenio.size() > 0) {
                 System.out.println("En este momento hay " + animalesDuenio.size() + " animalitos registrados : ");
-                for (Animal animal: animales) {
+                for (Animal animal: animalesDuenio) {
                     System.out.println("-------------------------------------");
                     System.out.println("((" + (animales.indexOf(animal) + 1)  + "))");
                     System.out.println(animal);
                 }
 
-                System.out.println("Cual desea retirar? (Indique según el número de la lista)");
-                int indiceRetirarAnimal = sc.nextInt();
+                Integer indiceRetirarAnimal = null;
+                boolean valorInvalido = true;
+
+                do {
+                    System.out.println("Cual desea retirar? (Indique según el número de la lista)");
+
+                    try {
+                        //Agregar control para que no se exceda del limite de la lista (no out of range)
+                        indiceRetirarAnimal = sc.nextInt();
+                        valorInvalido = false;
+                    }
+                    catch (InputMismatchException e) {
+                        System.out.println("No ha ingresado indice valido. Intente nuevamente.");
+                        sc.nextLine();
+                    }
+                } while (valorInvalido);
 
                 animales.remove(animalesDuenio.get(indiceRetirarAnimal-1));
                 animalesDuenio.remove(indiceRetirarAnimal-1);
