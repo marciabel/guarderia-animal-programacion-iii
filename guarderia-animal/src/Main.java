@@ -239,11 +239,15 @@ public class Main {
                     System.out.println("Cual desea retirar? (Indique según el número de la lista)");
 
                     try {
-                        //Agregar control para que no se exceda del limite de la lista (no out of range)
                         indiceRetirarAnimal = sc.nextInt();
+
+                        if (indiceRetirarAnimal < 0 || indiceRetirarAnimal >= animalesDuenio.size()) {
+                            throw new IndexOutOfBoundsException();
+                        }
+
                         valorInvalido = false;
                     }
-                    catch (InputMismatchException e) {
+                    catch (IndexOutOfBoundsException  | InputMismatchException e) {
                         System.out.println("No ha ingresado indice valido. Intente nuevamente.");
                         sc.nextLine();
                     }
