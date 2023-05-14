@@ -33,7 +33,7 @@ public abstract class Animal {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 

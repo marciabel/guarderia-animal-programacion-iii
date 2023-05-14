@@ -1,16 +1,11 @@
 import org.w3c.dom.ls.LSOutput;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
+import java.util.*;
 import java.util.List;
-import java.util.Scanner;
 
-public class Main {
+public class Main{
     public static void main(String[] args) {
-        //Scanner para leer los datos por consola
-        Scanner sc = new Scanner(System.in);
-
         //Collection para almacenar los animales. Por el momento todas las especies se almacenan en la misma estructura.
         List<Animal> animales = new ArrayList<>();
 
@@ -18,32 +13,43 @@ public class Main {
         agregarAnimalesIniciales(animales);
 
         //MENU ----------------------------------------------------------------------------------------
-        int opcion;
+        Integer opcion;
 
         do {
             imprimirMenu();
-            opcion = sc.nextInt();
+
+            opcion = LeerConsola.leerInteger();
+            if (Objects.isNull(opcion)) {break;}
 
             switch (opcion) {
                 case 1: {
-                    ingresarAnimal(animales, sc); break;
+                    ingresarAnimal(animales);
+                    System.out.println("Presione enter para continuar...");
+                    LeerConsola.saltoLinea();
+                    break;
                 }
                 case 2: {
-                    retirarAnimales(animales, sc); break;
+                    retirarAnimales(animales);
+                    System.out.println("Presione enter para continuar...");
+                    LeerConsola.saltoLinea();
+                    break;
                 }
                 case 3: {
                     cantidadAnimalesEnGuarderia(animales);
-                    sc.nextLine(); sc.nextLine();
+                    System.out.println("Presione enter para continuar...");
+                    LeerConsola.saltoLinea();
                     break;
                 }
                 case 4: {
                     listarAnimalesEnGuarderia(animales);
-                    sc.nextLine(); sc.nextLine();
+                    System.out.println("Presione enter para continuar...");
+                    LeerConsola.saltoLinea();
                     break;
                 }
                 case 5: {
                     hacerSaludarAnimales(animales);
-                    sc.nextLine(); sc.nextLine();
+                    System.out.println("Presione enter para continuar...");
+                    LeerConsola.saltoLinea();
                     break;
                 }
                 case 0: {
@@ -69,7 +75,6 @@ public class Main {
         System.out.println("5. Hacer saludar a todos los animales de la lista");
         System.out.println("0. Salir");
     }
-
     public static void imprimirAnimales(List <Animal> animales) {
         for (Animal animal: animales) {
             System.out.println("Posición : " + (animales.indexOf(animal) + 1));
@@ -86,50 +91,71 @@ public class Main {
     //Opciones menu-----------------------------------------------------------------------------------
 
     //Opcion 1===============================================================================
-    public static void ingresarAnimal(List<Animal> animales, Scanner sc) {
+    public static void ingresarAnimal(List<Animal> animales) {
+
+        //Carga de datos del dueño
+        System.out.println("Ingrese DNI del dueño: ");
+        Integer dni = LeerConsola.leerInteger();
+        if (Objects.isNull(dni)) {return;}
+
+        System.out.println("Ingrese nombre del dueño: ");
+        String nombreDuenio = LeerConsola.leerString();
+
+        System.out.println("Ingrese la direccion donde vive: ");
+        String direccion = LeerConsola.leerString();
 
         //Carga de datos del animal
-        System.out.println("Ingrese la especie del animal: ");
-        String especie = sc.next();
-        sc.nextLine();
-        System.out.println("Ingrese el nombre del animalito: ");
-        String nombre = sc.next();
-        System.out.println("Ingrese edad del animal: ");
-        int edad = sc.nextInt();
-        System.out.println("Ingrese nombre del dueño: ");
-        String nombreDuenio = sc.next();
-        sc.nextLine();
-        System.out.println("Ingrese DNI del dueño: ");
-        int dni = sc.nextInt();
-        System.out.println("Ingrese la direccion donde vive: ");
-        String direccion = sc.next();
-        sc.nextLine();
-        System.out.println("Ingrese el sexo del animal: ");
-        char sexoChar = sc.next().charAt(0);
-        Sexo sexo = (sexoChar == 'M') ? Sexo.MACHO : Sexo.HEMBRA;
-        System.out.println("Ingrese el peso del animal: ");
-        double peso = sc.nextDouble();
-        sc.nextLine();
+        List<String> opcionesEspecie = new ArrayList<>();
+        opcionesEspecie.add("Perro");
+        opcionesEspecie.add("Pez");
+        opcionesEspecie.add("Gato");
+        opcionesEspecie.add("Hamster");
 
-        Animal animal;
+        System.out.println("Ingrese la especie del animal: (Perro / Pez / Gato / Hamster) ");
+        String especie = LeerConsola.leerString(opcionesEspecie);
+        if (Objects.isNull(especie)) {return;}
+
+        System.out.println("Ingrese el nombre del animalito: ");
+        String nombre = LeerConsola.leerString();
+
+        System.out.println("Ingrese edad del animal: ");
+        Integer edad = LeerConsola.leerInteger();
+        if (Objects.isNull(edad)) {return;}
+
+        System.out.println("Ingrese el sexo del animal: (M: Macho / H: Hembra)");
+        List<Character> opcionesSexo = new ArrayList<>();
+        opcionesSexo.add('M');
+        opcionesSexo.add('H');
+
+        Character sexoChar = LeerConsola.leerCaracter(opcionesSexo);
+        if (Objects.isNull(sexoChar)){ return; }
+        Sexo sexo = (sexoChar == 'M' || sexoChar == 'm') ? Sexo.MACHO : Sexo.HEMBRA;
+
+        System.out.println("Ingrese el peso del animal (para decimales usar coma. Ejemplo: 2,5): ");
+        Double peso = LeerConsola.leerDouble();
+        if (Objects.isNull(peso)) {return;}
+
+        //Instancias de las clases
+        Animal animal = null;
         Duenio duenio = new Duenio(dni, nombreDuenio, direccion);
 
+        //Construcción del objeto animal segun especie
         if (especie.equalsIgnoreCase("perro")){
             System.out.println("Ingrese la raza del perro: ");
-            String raza = sc.next();
-            sc.nextLine();
+            String raza = LeerConsola.leerString();
 
             animal = new Perro(nombre, edad, duenio, sexo, peso, raza);
-            animales.add(animal);
         }
         else if (especie.equalsIgnoreCase("pez")){
+            System.out.println("Ingrese de qué tipo de agua es el pez: (Salada/Dulce)");
+            List<String> opcionesAgua = new ArrayList<>();
+            opcionesEspecie.add("Salada");
+            opcionesEspecie.add("Dulce");
+            String tipoAgua = LeerConsola.leerString(opcionesAgua);
 
-            System.out.println("Ingrese de qué tipo de agua es el pez: (salada/dulce");
-            String tipoAgua = sc.next();
-            sc.nextLine();
+            if (Objects.isNull(tipoAgua)) {return;}
 
             animal = new Pez(nombre, edad, duenio, sexo, peso, tipoAgua);
-            animales.add(animal);
         }
         else if (especie.equalsIgnoreCase("gato")){
             animal = new Gato(nombre, edad, duenio, sexo, peso);
@@ -140,59 +166,80 @@ public class Main {
         else{
             System.out.println("Animal no registrado.");
             System.out.println();
+        }
 
+        try {
+            animales.add(animal);
+            System.out.println("Nuevo animalito sumado a la guarderia con exito!");
+        }
+        catch (NullPointerException e) {
+            System.out.println("Ha ocurrido un error cargando los datos del animalito, intente nuevamente.");
         }
     }
 
     //Opcion 2===============================================================================
-    public static void retirarAnimales(List<Animal> animales, Scanner sc) {
-        System.out.println("Seleccione una de las opciones a continuación: ");
-        System.out.println("1. Retirar un animalito de la guarderia");
-        System.out.println("2. Retirar todos los animalitos de la guarderia");
+    public static void retirarAnimales(List<Animal> animales) {
 
-        int retirarOpcion = sc.nextInt();
+            System.out.println("Seleccione una de las opciones a continuación: ");
+            System.out.println("1. Retirar un animalito de la guarderia");
+            System.out.println("2. Retirar todos los animalitos de la guarderia");
+            System.out.println("3. Volver al menu principal");
+
+            int[] rangoMenu = {1,3};
+            Integer retirarOpcion = LeerConsola.leerInteger(rangoMenu);
+            if (Objects.isNull(retirarOpcion)) {
+                System.out.println("Se lo redireccionará al menú principal...");
+                return;
+            }
 
         switch (retirarOpcion) {
             case 1: {
-                retirarUnAnimal(animales, sc); break;
+                retirarUnAnimal(animales); break;
             }
             case 2: {
-                System.out.println("Se retiraran los siguientes animalitos de la guarderia: ");
-                imprimirAnimales(animales);
+                if (animales.size() > 0) {
+                    System.out.println("Se retiraran los siguientes animalitos de la guarderia: ");
+                    imprimirAnimales(animales);
 
-                System.out.println("Confirma la operacion? (S/N)");
-                int confirmarOperacion = sc.next().charAt(0);
-                if (confirmarOperacion == 'S' || confirmarOperacion == 's' ) {
-                    animales.clear();
-                    System.out.println("Animalitos retirados con éxito.");
+                    System.out.println("Confirma la operacion? (S/N)");
+                    char confirmarOperacion = LeerConsola.leerCaracter();
+                    if (confirmarOperacion == 'S' || confirmarOperacion == 's' ) {
+                        animales.clear();
+                        System.out.println("Animalitos retirados con éxito.");
+                    }
+                    else if (confirmarOperacion == 'N' || confirmarOperacion == 'n') {
+                        System.out.println("Operacion cancelada. Se lo redireccionara al menu principal...");
+                    }
+                    else {
+                        System.out.println("La opcion ingresada no es correcta. Se lo redireccionara al menu principal...");
+                    }
                 }
                 else {
-                    System.out.println("Operacion cancelada");
+
                 }
                 break;
 
+            }
+            case 3: {
+                return;
             }
             default: {
                 System.out.println("Opcion incorrecta, por favor intente de nuevo");
-                retirarAnimales(animales, sc);
+                retirarAnimales(animales);
                 break;
             }
         }
-
     }
-    public static void retirarUnAnimal(List<Animal> animales, Scanner sc) {
+    public static void retirarUnAnimal(List<Animal> animales) {
 
         int dniDuenio = 0;
 
         System.out.println("++++++++++++++++++++RETIRAR UN ANIMALITO++++++++++++++++++++");
         System.out.println("Ingrese el DNI del dueño: ");
-        try {
-            dniDuenio = sc.nextInt();
-        }
-        catch (InputMismatchException e) {
+
+        dniDuenio = LeerConsola.leerInteger();
+        if (dniDuenio < 0 ) {
             System.out.println("No ha ingresado un DNI valido.");
-            sc.nextLine();
-            retirarUnAnimal(animales, sc);
         }
 
         Duenio duenio;
@@ -209,18 +256,22 @@ public class Main {
             System.out.println("El dni indicado no existe o no tiene animalitos registrados en la guarderia.");
 
             System.out.println("Desea intentar de nuevo? (S/N)");
-            char intentarNuevamente =  sc.next().charAt(0);
 
-            if (intentarNuevamente== 'S' || intentarNuevamente == 's') {
-                retirarUnAnimal(animales, sc);
+            List<Character> opcionesBinarias = new ArrayList<>();
+            opcionesBinarias.add('S');
+            opcionesBinarias.add('N');
+
+            Character intentarNuevamente = LeerConsola.leerCaracter(opcionesBinarias);
+
+            if (Objects.isNull(intentarNuevamente)) {return;}
+            else if (intentarNuevamente== 'S' || intentarNuevamente == 's') {
+                retirarUnAnimal(animales);
             }
             else if (intentarNuevamente == 'N' || intentarNuevamente == 'n') {
-                System.out.println("Operacion terminada. Se lo redireccionara al menu principal...");
-                sc.nextLine(); sc.nextLine();
+                System.out.println("Operacion terminada. Se lo redireccionara al menu principal (presione enter para continuar)...");
             }
             else {
-                System.out.println("La opcion ingresada no es correcta. Se lo redireccionara al menu principal...");
-                sc.nextLine(); sc.nextLine();
+                System.out.println("La opcion ingresada no es correcta. Se lo redireccionara al menu  (presione enter para continuar)...");
             }
         }
         else {
@@ -232,26 +283,21 @@ public class Main {
                     System.out.println(animal);
                 }
 
+                boolean valorInvalido = false;
                 Integer indiceRetirarAnimal = null;
-                boolean valorInvalido = true;
 
                 do {
                     System.out.println("Cual desea retirar? (Indique según el número de la lista)");
 
                     try {
-                        indiceRetirarAnimal = sc.nextInt();
-
-                        if (indiceRetirarAnimal < 0 || indiceRetirarAnimal >= animalesDuenio.size()) {
-                            throw new IndexOutOfBoundsException();
-                        }
-
-                        valorInvalido = false;
+                        int[] rangoOpciones = {0, animalesDuenio.size()};
+                        indiceRetirarAnimal = LeerConsola.leerInteger(rangoOpciones);
+                        valorInvalido = true;
                     }
-                    catch (IndexOutOfBoundsException  | InputMismatchException e) {
+                    catch (IndexOutOfBoundsException  e) {
                         System.out.println("No ha ingresado indice valido. Intente nuevamente.");
-                        sc.nextLine();
                     }
-                } while (valorInvalido);
+                } while (!valorInvalido);
 
                 animales.remove(animalesDuenio.get(indiceRetirarAnimal-1));
                 animalesDuenio.remove(indiceRetirarAnimal-1);
@@ -259,14 +305,18 @@ public class Main {
 
                 if (animalesDuenio.size() > 0) {
                     System.out.println("Desea retirar otro animalito? (S/N)");
-                    char retirarOtroAnimal =  sc.next().charAt(0);
+                    Character retirarOtroAnimal = LeerConsola.leerCaracter();
                     if (retirarOtroAnimal == 'N' || retirarOtroAnimal == 'n') {
                         break;
+                    }
+                    else if (retirarOtroAnimal == 'S' || retirarOtroAnimal == 's') {}
+                    else {
+                        System.out.println("La opcion ingresada no es correcta. Intente nuevamente");
                     }
                 }
                 else {
                     System.out.println("No tenemos más animalitos registrados para este dueño! Presione enter para volver al menu.");
-                    sc.nextLine(); sc.nextLine();
+                    LeerConsola.saltoLinea();
                 }
             }
         }
@@ -275,7 +325,6 @@ public class Main {
     //Opcion 3===============================================================================
     public static void cantidadAnimalesEnGuarderia(List<Animal> animales) {
         System.out.println("En la guarderia hay actualmente " + animales.size() + " animales.");
-        System.out.println("Presione enter para volver al menu.");
     }
 
     //Opcion 4===============================================================================
@@ -283,9 +332,7 @@ public class Main {
         System.out.println("______________ANIMALITOS EN LA GUARDERIA______________");
         if (animales.size() > 0) {
             imprimirAnimales(animales);
-
             System.out.println("");
-            System.out.println("Presione enter para volver al menu.");
         }
         else {
             System.out.println("No hay animalitos registrados en la guarderia en este momento.");
@@ -295,11 +342,15 @@ public class Main {
     //Opcion 5===============================================================================
     public static void hacerSaludarAnimales(List<Animal> animales) {
         System.out.println("Preparense! A continuación todos nuestros animalitos van a saludar: ");
-        for (Animal animal: animales) {
-            animal.saludar();
-            System.out.println("");
+        if (animales.size() > 0 ) {
+            for (Animal animal: animales) {
+                animal.saludar();
+                System.out.println("");
+            }
         }
-
+        else {
+            System.out.println("Oh no! No hay animalitos en la guarderia en este momento");
+        }
     }
 
     //====================================================================================================
