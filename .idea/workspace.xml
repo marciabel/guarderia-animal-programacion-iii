@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d9470d28-5b5c-42d1-a2c6-276327b60cee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guarderia-animal/src/LeerConsola.java" beforeDir="false" afterPath="$PROJECT_DIR$/guarderia-animal/src/LeerConsola.java" afterDir="false" />
     </list>
     <list id="d5f0dc41-8b12-462c-a591-8fe095e2afe8" name="Changes by Windows10" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +81,8 @@
       <workItem from="1683850972984" duration="91000" />
       <workItem from="1683945942988" duration="3203000" />
       <workItem from="1683988173109" duration="14273000" />
-      <workItem from="1684072535568" duration="22365000" />
+      <workItem from="1684072535568" duration="23007000" />
+      <workItem from="1684115510224" duration="368000" />
     </task>
     <servers />
   </component>

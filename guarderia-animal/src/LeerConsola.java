@@ -83,21 +83,19 @@ public class LeerConsola {
                 if (caracter == caract || caracter == (caract - 32) || caracter == (caract + 32)) {
                     return caracter;
                 }
-                cantidadIntentos++;
+            }
+            cantidadIntentos++;
 
-                if (cantidadIntentos < 3) {
-                    System.out.println("El valor ingresado es incorrecto. Quedan " + (3 - cantidadIntentos) + " intentos disponibles.");
-                    caracter = leerCaracter();
-                } else {
-                    System.out.println("No quedan más intentos disponibles. ");
-
-                }
+            if (cantidadIntentos < 3) {
+                System.out.println("El valor ingresado es incorrecto. Quedan " + (3 - cantidadIntentos) + " intentos disponibles.");
+                caracter = leerCaracter();
+            } else {
+                System.out.println("No quedan más intentos disponibles. ");
             }
         } while (cantidadIntentos < 3);
 
         return null;
     }
-
 
     public static String leerString() {
             String cadenaCaracteres = sc.next();
