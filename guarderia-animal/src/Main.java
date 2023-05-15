@@ -149,8 +149,8 @@ public class Main{
         else if (especie.equalsIgnoreCase("pez")){
             System.out.println("Ingrese de qué tipo de agua es el pez: (Salada/Dulce)");
             List<String> opcionesAgua = new ArrayList<>();
-            opcionesEspecie.add("Salada");
-            opcionesEspecie.add("Dulce");
+            opcionesAgua.add("Salada");
+            opcionesAgua.add("Dulce");
             String tipoAgua = LeerConsola.leerString(opcionesAgua);
 
             if (Objects.isNull(tipoAgua)) {return;}
