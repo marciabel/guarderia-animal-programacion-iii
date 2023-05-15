@@ -9,7 +9,7 @@
 
 Grafico UML del programa:
 
-![Imagen del diseño UML](./guarderia-animales-programacion-iii-uml.png)
+![Imagen del diseño UML](guarderia-animales-programacion-iii-uml.png)
 
 
 ### Informacion
