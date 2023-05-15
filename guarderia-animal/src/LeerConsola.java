@@ -69,8 +69,8 @@ public class LeerConsola {
     }
 
 
-    public static char leerCaracter() {
-        char caracter = sc.next().charAt(0);
+    public static Character leerCaracter() {
+        Character caracter = sc.next().charAt(0);
         sc.nextLine();
         return caracter;
     }

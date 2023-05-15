@@ -27,10 +27,6 @@ public class Hamster extends Animal {
         return  ("hamster").hashCode() + this.getNombre().hashCode() + this.getEdad();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 
     @Override
     public String toString() {

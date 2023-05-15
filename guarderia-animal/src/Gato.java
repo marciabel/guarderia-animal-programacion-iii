@@ -28,11 +28,6 @@ public class Gato extends Animal {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
     public String toString() {
         return ("Tipo de animal: Gato \n" +
                 "Nombre: " + this.getNombre() + "\n" +

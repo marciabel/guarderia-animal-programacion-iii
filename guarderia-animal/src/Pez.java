@@ -31,8 +31,13 @@ public class Pez extends Animal {
         return tipoAgua;
     }
 
-    public void setTipoAgua(TipoAgua tipoAgua) {
-        this.tipoAgua = tipoAgua;
+    public void setTipoAgua(String tipoAgua) {
+        if (tipoAgua.equalsIgnoreCase("salada")) {
+            this.tipoAgua = TipoAgua.SALADA;
+        }
+        else if (tipoAgua.equalsIgnoreCase("dulce")){
+            this.tipoAgua = TipoAgua.DULCE;
+        }
     }
 
 
@@ -48,10 +53,6 @@ public class Pez extends Animal {
         return ("pez").hashCode() + this.getNombre().hashCode() + this.getEdad();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 
     @Override
     public String toString() {
