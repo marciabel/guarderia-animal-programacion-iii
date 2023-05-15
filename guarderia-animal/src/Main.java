@@ -279,7 +279,7 @@ public class Main{
                 System.out.println("En este momento hay " + animalesDuenio.size() + " animalitos registrados : ");
                 for (Animal animal: animalesDuenio) {
                     System.out.println("-------------------------------------");
-                    System.out.println("((" + (animales.indexOf(animal) + 1)  + "))");
+                    System.out.println("((" + (animalesDuenio.indexOf(animal) + 1)  + "))");
                     System.out.println(animal);
                 }
 

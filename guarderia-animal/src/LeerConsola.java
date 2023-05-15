@@ -100,8 +100,8 @@ public class LeerConsola {
 
 
     public static String leerString() {
-        String cadenaCaracteres = sc.next();
-        sc.nextLine();
+            String cadenaCaracteres = sc.next();
+            sc.nextLine();
         return cadenaCaracteres;
     }
 
